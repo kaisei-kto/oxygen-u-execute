@@ -1,4 +1,4 @@
-> Put this in your Oxygen U `autoexec` folder
+> Put this in your SirHurt `autoexe` folder
 
 ```lua
 local HttpService = game:GetService('HttpService')
