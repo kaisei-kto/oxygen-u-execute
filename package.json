@@ -1,10 +1,10 @@
 {
-	"name": "oxygen-u-execute",
-	"displayName": "Oxygen U Execute Extension",
+	"name": "sirhurt-execute",
+	"displayName": "SirHurt Execute Extension",
 	"description": "Executes the code from your Visual Studio Code's current tab",
-	"icon": "oxygen-u.png",
-	"author": "kaisei-kto",
-	"publisher": "kaisei-kto",
+	"icon": "sirhurtlogo.png",
+	"author": "Yxild",
+	"publisher": "Yxild",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.60.0"
@@ -22,26 +22,26 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "o2u-execute.execute",
-				"title": "O2U: Execute Script"
+				"command": "sh-execute.execute",
+				"title": "SH: Execute Script"
 			},
 			{
-				"command": "o2u-execute.executeFile",
-				"title": "O2U: Execute File"
+				"command": "sh-execute.executeFile",
+				"title": "SH: Execute File"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
 					"when": "editorLangId == lua || resourceExtname == .lua || resourceExtname == .luau",
-					"command": "o2u-execute.execute",
+					"command": "sh-execute.execute",
 					"group": "navigation"
 				}
 			],
 			"explorer/context": [
 				{
 					"when": "editorLangId == lua || resourceExtname == .lua || resourceExtname == .luau",
-					"command": "o2u-execute.executeFile",
+					"command": "sh-execute.executeFile",
 					"group": "navigation"
 				}
 			]
