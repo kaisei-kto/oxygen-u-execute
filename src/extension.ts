@@ -10,7 +10,7 @@ import WebSocket = require('ws');
 var ctx: vscode.ExtensionContext;
 var statusBarItem: vscode.StatusBarItem;
 const ws = new Server({
-	port: 10634
+	port: 42069
 })
 
 function isValidEditor(editor?: vscode.TextEditor) {
@@ -26,7 +26,7 @@ function isValidEditor(editor?: vscode.TextEditor) {
 }
 
 function executeScript(script: string) {
-	if (ws.clients.size === 0) return vscode.window.showErrorMessage("Oxygen U websocket is not connected.");
+	if (ws.clients.size === 0) return vscode.window.showErrorMessage("SirHurt WebSocket is not connected.");
 
 	for (const client of ws.clients)
 		client.send(script)
@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	if (!statusBarItem) {
 		statusBarItem = Object.assign(vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left), {
-			command: 'o2u-execute.execute',
+			command: 'sh-execute.execute',
 			tooltip: 'Executes the script from your active editor',
 			text: '$(debug-start) O2U Execute'
 		});
@@ -49,9 +49,9 @@ export function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(statusBarItem);
 	}
 
-	console.log('Oxygen U Execute has been activated');
+	console.log('SirHurt Execution has been activated!');
 
-	context.subscriptions.push(vscode.commands.registerCommand('o2u-execute.execute', () => {
+	context.subscriptions.push(vscode.commands.registerCommand('sh-execute.execute', () => {
 		const script = vscode.window.activeTextEditor?.document.getText();
 
 		if (typeof script === 'string') {
@@ -59,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	}));
 
-	context.subscriptions.push(vscode.commands.registerCommand('o2u-execute.executeFile', (data) => {
+	context.subscriptions.push(vscode.commands.registerCommand('sh-execute.executeFile', (data) => {
 		if (typeof data === 'object' && 'fsPath' in data) {
 			executeScript(readFileSync(data.fsPath, 'utf8'));
 		}
